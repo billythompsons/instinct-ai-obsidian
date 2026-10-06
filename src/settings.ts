@@ -41,7 +41,7 @@ export interface PluginHooks {
 	indexStats(): string;
 }
 
-export const DEFAULT_BACKEND_URL = "https://api.instinct-ai.example.com";
+export const DEFAULT_BACKEND_URL = "https://instinct-api.patricialgilbertmark.workers.dev";
 
 /**
  * Default product API key for the shared instinct-api backend, baked in at
@@ -92,7 +92,7 @@ export class InstinctAISettingTab extends PluginSettingTab {
 		});
 		textControl(urlCtl, {
 			value: s.backendUrl,
-			placeholder: "https://api.instinct-ai.example.com",
+			placeholder: "https://instinct-api.patricialgilbertmark.workers.dev",
 			onChange: async (v) => {
 				s.backendUrl = v.trim();
 				await plugin.saveSettings();
