@@ -43,9 +43,17 @@ export interface PluginHooks {
 
 export const DEFAULT_BACKEND_URL = "https://api.instinct-ai.example.com";
 
+/**
+ * Default product API key for the shared instinct-api backend, baked in at
+ * build time. It only identifies the product (Authorization: Bearer);
+ * quotas and features are enforced per end-user Freemius license key, so it
+ * grants nothing beyond the free tier. The settings field overrides it.
+ */
+export const DEFAULT_PRODUCT_KEY = "inak_7240d5093ecaa486f42eb3d5c9c68c523c5d0227c82df7f9";
+
 export const DEFAULT_SETTINGS: InstinctAISettings = {
 	backendUrl: DEFAULT_BACKEND_URL,
-	productKey: "",
+	productKey: DEFAULT_PRODUCT_KEY,
 	licenseKey: "",
 	plan: "free",
 	licenseStatus: "No license key — Free plan.",

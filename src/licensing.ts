@@ -68,15 +68,15 @@ export const PLANS: Record<PlanId, Plan> = {
 };
 
 /**
- * Freemius product ID for Instinct AI (Obsidian). 0 = placeholder until the
- * product is created in the Freemius dashboard; the parent agent fills this in.
+ * Freemius product ID for Instinct AI (Obsidian). 40900 = live product in the
+ * Freemius dashboard (store 18813).
  */
-export const FREEMIUS_PRODUCT_ID = 0;
+export const FREEMIUS_PRODUCT_ID = 40900;
 
 /** Checkout/upgrade URL. Uses the Freemius checkout once FREEMIUS_PRODUCT_ID is set. */
 export function upgradeUrl(): string {
 	if (FREEMIUS_PRODUCT_ID > 0) {
-		return `https://checkout.freemius.com/mode/dialog/product/${FREEMIUS_PRODUCT_ID}/`;
+		return `https://checkout.freemius.com/app/${FREEMIUS_PRODUCT_ID}/`;
 	}
 	return "https://github.com/billythompsons/instinct-ai-obsidian#pricing";
 }
