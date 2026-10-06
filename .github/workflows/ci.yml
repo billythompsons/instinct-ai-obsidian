@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit -p .
+      - run: npm test
+      - run: node esbuild.config.mjs production
+      - name: Verify release bundle
+        run: node -e "const s=require('fs').readFileSync('main.js','utf8');for(const n of ['ask-vault','summarize-note','transcribe-voice-note','rebuild-index','/v1/chat','/v1/transcribe','X-License-Key']){if(!s.includes(n))throw new Error('missing '+n)}console.log('bundle OK')"

@@ -1,0 +1,380 @@
+/* Instinct AI for Obsidian — plugin styles.
+   Brand: deep-space navy + signal cyan + warm amber accent. */
+
+:root {
+	--instinct-accent: #22d3ee;
+	--instinct-accent-dim: rgba(34, 211, 238, 0.14);
+	--instinct-warm: #f59e0b;
+	--instinct-danger: #f87171;
+	--instinct-ink: #e8eef7;
+	--instinct-muted: #8b98ad;
+	--instinct-panel: rgba(255, 255, 255, 0.03);
+	--instinct-border: rgba(255, 255, 255, 0.1);
+	--instinct-radius: 10px;
+}
+
+/* ---------- modals ---------- */
+
+.instinct-modal {
+	color: var(--instinct-ink);
+	min-width: min(560px, 80vw);
+}
+
+.instinct-modal h2 {
+	margin: 0 0 4px;
+	font-size: 1.25em;
+	letter-spacing: 0.01em;
+}
+
+.instinct-modal-sub {
+	color: var(--instinct-muted);
+	font-size: 0.9em;
+	margin-bottom: 14px;
+}
+
+.instinct-ask-input {
+	width: 100%;
+	resize: vertical;
+	min-height: 72px;
+	background: var(--instinct-panel);
+	border: 1px solid var(--instinct-border);
+	border-radius: var(--instinct-radius);
+	color: var(--instinct-ink);
+	padding: 10px 12px;
+	font-size: 1em;
+	line-height: 1.5;
+}
+
+.instinct-ask-input:focus {
+	outline: none;
+	border-color: var(--instinct-accent);
+	box-shadow: 0 0 0 2px var(--instinct-accent-dim);
+}
+
+.instinct-btn-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin: 12px 0;
+}
+
+.instinct-hint {
+	color: var(--instinct-muted);
+	font-size: 0.8em;
+}
+
+.instinct-btn {
+	background: var(--instinct-panel);
+	border: 1px solid var(--instinct-border);
+	border-radius: 8px;
+	color: var(--instinct-ink);
+	padding: 8px 16px;
+	font-size: 0.95em;
+	cursor: pointer;
+	transition: border-color 0.15s, background 0.15s;
+}
+
+.instinct-btn:hover:not(:disabled) {
+	border-color: var(--instinct-accent);
+	background: var(--instinct-accent-dim);
+}
+
+.instinct-btn:disabled {
+	opacity: 0.45;
+	cursor: default;
+}
+
+.instinct-btn-cta {
+	background: var(--instinct-accent);
+	border-color: var(--instinct-accent);
+	color: #062a33;
+	font-weight: 600;
+}
+
+.instinct-btn-cta:hover:not(:disabled) {
+	background: #67e8f9;
+	border-color: #67e8f9;
+}
+
+.instinct-btn-record {
+	border-color: var(--instinct-warm);
+}
+
+.instinct-btn-record.instinct-recording {
+	background: var(--instinct-danger);
+	border-color: var(--instinct-danger);
+	color: #3b0a0a;
+	font-weight: 600;
+	animation: instinct-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes instinct-pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.72; }
+}
+
+/* ---------- results ---------- */
+
+.instinct-result {
+	background: var(--instinct-panel);
+	border: 1px solid var(--instinct-border);
+	border-radius: var(--instinct-radius);
+	padding: 14px 16px;
+	max-height: 46vh;
+	overflow-y: auto;
+	line-height: 1.6;
+	font-size: 0.95em;
+}
+
+.instinct-result.instinct-empty {
+	color: var(--instinct-muted);
+	border-style: dashed;
+}
+
+.instinct-result h3,
+.instinct-result h4,
+.instinct-result h5,
+.instinct-result h6 {
+	margin: 0.9em 0 0.4em;
+	color: var(--instinct-ink);
+}
+
+.instinct-result p { margin: 0.5em 0; }
+.instinct-result ul,
+.instinct-result ol { margin: 0.5em 0; padding-left: 1.4em; }
+.instinct-result li { margin: 0.25em 0; }
+
+.instinct-result pre {
+	background: rgba(0, 0, 0, 0.35);
+	border: 1px solid var(--instinct-border);
+	border-radius: 6px;
+	padding: 10px 12px;
+	overflow-x: auto;
+	font-size: 0.88em;
+}
+
+.instinct-result code {
+	background: rgba(0, 0, 0, 0.35);
+	border-radius: 4px;
+	padding: 0.1em 0.35em;
+	font-size: 0.9em;
+}
+
+.instinct-result pre code {
+	background: none;
+	padding: 0;
+}
+
+.instinct-wikilink {
+	color: var(--instinct-accent);
+	background: var(--instinct-accent-dim);
+	border-radius: 4px;
+	padding: 0.05em 0.3em;
+	white-space: nowrap;
+}
+
+.instinct-loading {
+	color: var(--instinct-muted);
+	font-style: italic;
+}
+
+.instinct-error {
+	color: var(--instinct-danger);
+}
+
+.instinct-lang {
+	color: var(--instinct-muted);
+	font-size: 0.82em;
+	margin-bottom: 6px;
+}
+
+/* ---------- summarize modal ---------- */
+
+.instinct-style-row {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 12px;
+}
+
+.instinct-style-label {
+	color: var(--instinct-muted);
+	font-size: 0.9em;
+}
+
+.instinct-select {
+	background: var(--instinct-panel);
+	border: 1px solid var(--instinct-border);
+	border-radius: 8px;
+	color: var(--instinct-ink);
+	padding: 7px 10px;
+	font-size: 0.95em;
+	flex: 1;
+}
+
+/* ---------- voice modal ---------- */
+
+.instinct-voice-row {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-bottom: 10px;
+}
+
+.instinct-voice-timer {
+	font-variant-numeric: tabular-nums;
+	font-size: 1.3em;
+	color: var(--instinct-ink);
+	letter-spacing: 0.06em;
+}
+
+.instinct-voice-status {
+	color: var(--instinct-muted);
+	font-size: 0.88em;
+	margin-bottom: 12px;
+	min-height: 1.4em;
+}
+
+.instinct-voice-status-error {
+	color: var(--instinct-danger);
+}
+
+/* ---------- settings tab ---------- */
+
+.instinct-settings h2 {
+	margin-bottom: 2px;
+}
+
+.instinct-settings-sub {
+	color: var(--instinct-muted);
+	font-size: 0.9em;
+	margin-bottom: 10px;
+	max-width: 640px;
+}
+
+.instinct-settings h3 {
+	margin: 22px 0 6px;
+	padding-top: 14px;
+	border-top: 1px solid var(--instinct-border);
+	font-size: 1.05em;
+}
+
+.instinct-setting-row {
+	display: flex;
+	gap: 18px;
+	align-items: flex-start;
+	padding: 10px 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+	max-width: 760px;
+}
+
+.instinct-setting-info {
+	flex: 1 1 55%;
+}
+
+.instinct-setting-name {
+	font-weight: 600;
+	margin-bottom: 3px;
+}
+
+.instinct-setting-desc {
+	color: var(--instinct-muted);
+	font-size: 0.86em;
+	line-height: 1.5;
+}
+
+.instinct-setting-control {
+	flex: 1 1 45%;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	align-items: stretch;
+}
+
+.instinct-input {
+	width: 100%;
+	background: var(--instinct-panel);
+	border: 1px solid var(--instinct-border);
+	border-radius: 8px;
+	color: var(--instinct-ink);
+	padding: 8px 10px;
+	font-size: 0.95em;
+}
+
+.instinct-input:focus {
+	outline: none;
+	border-color: var(--instinct-accent);
+	box-shadow: 0 0 0 2px var(--instinct-accent-dim);
+}
+
+.instinct-license-actions {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.instinct-license-status {
+	flex: 1;
+	color: var(--instinct-muted);
+	font-size: 0.86em;
+}
+
+.instinct-upgrade-link {
+	color: var(--instinct-accent);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.instinct-upgrade-link:hover {
+	text-decoration: underline;
+}
+
+.instinct-slider-wrap {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.instinct-slider {
+	flex: 1;
+	accent-color: var(--instinct-accent);
+}
+
+.instinct-slider-val {
+	min-width: 2ch;
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+}
+
+.instinct-toggle {
+	width: 20px;
+	height: 20px;
+	accent-color: var(--instinct-accent);
+	align-self: center;
+}
+
+.instinct-index-stats {
+	color: var(--instinct-muted);
+	font-size: 0.86em;
+}
+
+/* ---------- light theme adjustments ---------- */
+
+.theme-light .instinct-modal,
+.theme-light .instinct-settings {
+	--instinct-ink: #1e293b;
+	--instinct-muted: #64748b;
+	--instinct-panel: rgba(15, 23, 42, 0.03);
+	--instinct-border: rgba(15, 23, 42, 0.14);
+	--instinct-accent-dim: rgba(8, 145, 178, 0.12);
+}
+
+.theme-light .instinct-btn-cta {
+	color: #083344;
+}
+
+.theme-light .instinct-result pre,
+.theme-light .instinct-result code {
+	background: rgba(15, 23, 42, 0.06);
+}
