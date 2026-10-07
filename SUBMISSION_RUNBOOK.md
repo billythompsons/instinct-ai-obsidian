@@ -72,10 +72,20 @@ git push origin 1.0.0
 
 ## Open blockers / notes
 
-- Freemius product ID placeholder (`0`) — parent creates the product in the
-  Freemius dashboard, then set `FREEMIUS_PRODUCT_ID` and cut release `1.0.1`.
-- Backend base URL default (`https://api.instinct-ai.example.com`) must be
-  replaced with the production `instinct-api` URL before the 1.0.0 release
-  if it isn't live yet.
+- **PR creation BLOCKED 2026-10-07 ~13:45 HST:** the gh token for billythompsons
+  cannot open a PR on `obsidianmd/obsidian-releases` — GraphQL says
+  "billythompsons does not have the correct permissions to execute
+  `CreatePullRequest`", REST returns 404; reads and the fork-branch comparison
+  work fine, and the account is not suspended (writes to its own repos work).
+  Fork branch is ready: `billythompsons/obsidian-releases@add-instinct-ai-plugin`
+  (1 commit ahead, clean 8-line JSON diff). Manual path: open
+  https://github.com/obsidianmd/obsidian-releases/compare/master...billythompsons:add-instinct-ai-plugin
+  in a browser signed in as billythompsons and click Create pull request.
+- ~~Freemius product ID placeholder~~ — RESOLVED 2026-10-07: `FREEMIUS_PRODUCT_ID`
+  = `40900` (verified live in D1); checkout URL wired in settings.
+- ~~Backend base URL default~~ — RESOLVED 2026-10-07: `DEFAULT_BACKEND_URL` is
+  `https://instinct-api.patricialgilbertmark.workers.dev`, and the live
+  backend was smoke-tested (POST /v1/summarize returned a real summary;
+  GET /v1/license/verify returns the expected shape).
 - No secrets anywhere in the repo (verified: keys live only in the user's
   local `data.json`, never in source).
