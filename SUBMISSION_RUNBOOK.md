@@ -34,24 +34,32 @@ Repo (public, MIT — community plugins MUST be open-source): `billythompsons/in
 
 ## 2. Submit to the community plugin directory
 
-1. Fork https://github.com/obsidianmd/obsidian-releases.
-2. Edit `community-plugins.json`: append, keeping alphabetical order by `name`:
-   ```json
-   {
-     "id": "instinct-ai",
-     "name": "Instinct AI",
-     "author": "Instinct",
-     "description": "Ask questions about your vault, summarize notes, and transcribe voice notes with Instinct AI (Qwen3 + Whisper).",
-     "repo": "billythompsons/instinct-ai-obsidian"
-   }
-   ```
-   (`description` must match `manifest.json` verbatim.)
-3. Open a PR against `obsidianmd/obsidian-releases:main` titled
-   `Add plugin: Instinct AI`. The repo's PR template asks for the plugin ID
-   and a confirmation that the release assets exist — fill both in.
-4. Wait for the automated checks (release assets present, manifest valid),
-   then human review. Typical turnaround: a few days to two weeks.
-   Review feedback arrives as PR comments — address, re-release if needed.
+> **2026-10-07 CORRECTION — the PR route is DEAD.** `obsidianmd/obsidian-releases`
+> has pull requests disabled (verified live: compare page shows "An owner of this
+> repository has disabled the ability to open pull requests"). Do NOT fork, do NOT
+> hand-edit `community-plugins.json`, do NOT open a PR — the directory writes that
+> file itself now. The stale fork branch `billythompsons/obsidian-releases@add-instinct-ai-plugin`
+> is obsolete (leave the fork alone; deleting is optional cleanup).
+>
+> Submission is via the developer dashboard at **https://community.obsidian.md**
+> (ref: https://docs.obsidian.md/Plugins/Releasing/Submit+your+plugin):
+>
+> 1. Sign in with an Obsidian account (create one if needed).
+> 2. Link the GitHub account that owns the repo (`billythompsons`) — this is how
+>    the directory verifies repo ownership.
+> 3. **Plugins → New plugin** → enter the repository URL
+>    `https://github.com/billythompsons/instinct-ai-obsidian`.
+> 4. Review and agree to the developer policies, confirm ongoing support → **Submit**.
+>
+> What the portal reads: `manifest.json` at the **HEAD of the default branch**
+> (must be correct and pushed), then `main.js` / `manifest.json` / `styles.css`
+> from the GitHub release whose **tag exactly matches the manifest version —
+> NO `v` prefix** (e.g. tag `1.0.0` for version `1.0.0`).
+>
+> Automated review runs in minutes (Manifest / Releases / Source code / Build
+> verification → Error, Warning, Recommendation, Pass). Errors block listing;
+> warnings don't. Feedback is addressed by pushing a NEW release (bumped
+> version), not by editing anything in the directory.
 
 ## 3. After acceptance
 
@@ -72,15 +80,13 @@ git push origin 1.0.0
 
 ## Open blockers / notes
 
-- **PR creation BLOCKED 2026-10-07 ~13:45 HST:** the gh token for billythompsons
-  cannot open a PR on `obsidianmd/obsidian-releases` — GraphQL says
-  "billythompsons does not have the correct permissions to execute
-  `CreatePullRequest`", REST returns 404; reads and the fork-branch comparison
-  work fine, and the account is not suspended (writes to its own repos work).
-  Fork branch is ready: `billythompsons/obsidian-releases@add-instinct-ai-plugin`
-  (1 commit ahead, clean 8-line JSON diff). Manual path: open
-  https://github.com/obsidianmd/obsidian-releases/compare/master...billythompsons:add-instinct-ai-plugin
-  in a browser signed in as billythompsons and click Create pull request.
+- ~~PR creation BLOCKED 2026-10-07 ~13:45 HST~~ — SUPERSEDED 2026-10-07 ~14:00 HST:
+  the PR route itself is dead (repo disabled PRs); submission is via
+  https://community.obsidian.md per §2 above. The fork branch
+  `billythompsons/obsidian-releases@add-instinct-ai-plugin` is obsolete.
+- Release tag rule: tag must EXACTLY match `manifest.json` version — NO `v`
+  prefix. 2026-10-07: duplicate `v1.0.0` release deleted; canonical release is
+  tag `1.0.0` (marked Latest, 3 assets attached).
 - ~~Freemius product ID placeholder~~ — RESOLVED 2026-10-07: `FREEMIUS_PRODUCT_ID`
   = `40900` (verified live in D1); checkout URL wired in settings.
 - ~~Backend base URL default~~ — RESOLVED 2026-10-07: `DEFAULT_BACKEND_URL` is
